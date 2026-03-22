@@ -1,5 +1,5 @@
 import os
-from telegram import Update, ReplyKeyboardMarkup
+from telegram import ReplyKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 from openpyxl import Workbook
 from datetime import datetime
@@ -23,8 +23,21 @@ locations = load_locations()
 user_state = {}
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [["📊 Buat Data Baru"], ["📍 Check Lokasi"], ["➕ Tambah Lokasi"]]
-    await update.message.reply_text("Pilih menu:", reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True))
+    keyboard = [
+        ["📊 Buat Data Baru"],
+        ["📍 Check Lokasi"],
+        ["➕ Tambah Lokasi"]
+    ]
+
+    reply_markup = ReplyKeyboardMarkup(
+        keyboard,
+        resize_keyboard=True
+    )
+
+    await update.message.reply_text(
+        "Pilih menu:",
+        reply_markup=reply_markup
+    )
 
 async def handle(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global locations
