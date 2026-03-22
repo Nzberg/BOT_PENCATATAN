@@ -5,7 +5,7 @@ from openpyxl import Workbook
 from datetime import datetime
 import json
 
-TOKEN = os.getenv("8581211049:AAFXckqJMwdSKiSofvLQXr_9DW4KOSbh1M8")
+TOKEN = os.getenv("BOT_TOKEN")
 
 # Load lokasi dari file
 def load_locations():
